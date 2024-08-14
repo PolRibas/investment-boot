@@ -19,3 +19,11 @@ export const selectLanguage = async (): Promise<Messages> => {
     return answers.language;
   });
 }
+
+export class SelectedLocale {
+  static locale: Messages;
+
+  static async setLocale() {
+    this.locale = await selectLanguage();
+  }
+}

@@ -6,9 +6,11 @@ export const es: Messages = {
   actions: {
     checkPortfolio: 'Ver Portafolio',
     viewPositions: 'Ver Posiciones Abiertas',
+    runBoots: 'Ejecutar Botas',
     exit: 'Salir'
   },
   portfolioMessage: 'Aquí está su portafolio actual:',
   positionsMessage: 'Estas son sus posiciones abiertas:',
-  exitMessage: '¡Adiós!'
+  exitMessage: '¡Adiós!',
+  runBootsMessage: '¡Botas en marcha!'
 };

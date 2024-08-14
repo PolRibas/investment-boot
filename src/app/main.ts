@@ -1,32 +1,26 @@
+// src/app/main.ts
+import { ChalkLogger } from '@/utils/chalkLogger';
+import { SelectedLocale } from '@/messages';
+import { checkPortfolio, runBoots, viewPositions } from './functions';
 import { promptModule } from '@/config';
-import { Messages, selectLanguage } from '@/messages';
-
-let locale: Messages;
-
-async function checkPortfolio() {
-  console.log(locale.portfolioMessage);
-  // Lógica para mostrar el portafolio
-}
-
-async function viewPositions() {
-  console.log(locale.positionsMessage);
-  // Lógica para mostrar las posiciones abiertas
-}
 
 async function mainMenu() {
-  locale = await selectLanguage();
+  await SelectedLocale.setLocale();
 
-  console.log(locale.welcome);
+  const locale = SelectedLocale.locale;
+
+  console.log(ChalkLogger.cyanBold(locale.welcome));
 
   const questions = [
     {
       type: 'list',
       name: 'action',
-      message: locale.selectAction,
+      message: ChalkLogger.cyan(locale.selectAction),
       choices: [
-        { name: locale.actions.checkPortfolio, value: 'portfolio' },
-        { name: locale.actions.viewPositions, value: 'positions' },
-        { name: locale.actions.exit, value: 'exit' }
+        { name: ChalkLogger.white(locale.actions.checkPortfolio), value: 'portfolio' },
+        { name: ChalkLogger.white(locale.actions.viewPositions), value: 'positions' },
+        { name: ChalkLogger.white(locale.actions.runBoots), value: 'runBoots' },  // Nueva opción
+        // { name: ChalkLogger.red(locale.actions.exit), value: 'exit' }
       ]
     }
   ];
@@ -40,12 +34,12 @@ async function mainMenu() {
     case 'positions':
       await viewPositions();
       break;
-    case 'exit':
-      console.log(locale.exitMessage);
-      process.exit();
-    default:
-      console.log('Invalid option.');
+    case 'runBoots':  // Nuevo caso para ejecutar los boots
+      await runBoots();
       break;
+    default:
+      console.log(ChalkLogger.red('Invalid option.'));
+      process.exit();
   }
 }
 
