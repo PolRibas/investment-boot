@@ -1,30 +1,36 @@
-# investment-boot
+# Investment Boot
 
+Investment Boot is a TypeScript application designed to help you track and manage your stock market investments. With this tool, you can check your portfolio, view open positions, and run automated scripts ("boots") to streamline your investment processes. The application supports English and Spanish.
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone git@github.com:PolRibas/investment-boot.git
+cd investment-boot
 ```
-|__node_modules
-|__src
-   |__integrations
-        |__.gitkeep
-   |__types
-        |__.gitkeep
-   |__app
-       |__main.ts
-   |__config
-       |__index.ts
-       |__config.ts
-       |__prompt.module.ts
-   |__messages
-       |__index.ts
-       |__types
-           |__index.ts
-           |__messages.interface.ts
-       |__locales
-           |__index.ts
-           |__en
-              |__index.ts
-              |__en.ts
-           |__es
-              |__index.ts
-              |__es.ts
-|...(.gitignore, package.json, README....)
+
+Install dependencies:
+
+```bash
+npm install
 ```
+
+Run the application:
+
+```bash
+npm start
+```
+
+## Usage
+
+After starting the application, you'll be prompted to select your preferred language. From the main menu, you can:
+
+Check Portfolio: View your current investments.
+View Open Positions: See all your open trading positions.
+Run Boots: Execute automated scripts to handle various tasks.
+
+## License
+
+This project is licensed under the MIT License.
