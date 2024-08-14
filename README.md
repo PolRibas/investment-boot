@@ -4,8 +4,8 @@ Investment Boot is a TypeScript application designed to help you track and manag
 
 ## Requirements
 
-Node.js: Version 21 or higher
-npm: Version 10.5.0 or higher
+Node.js: `>= 21.0.0`
+npm: `>= 10.5.0`
 
 ## Installation
 
@@ -19,7 +19,7 @@ cd investment-boot
 Install dependencies:
 
 ```bash
-npm install
+npm ic
 ```
 
 Run the application:
