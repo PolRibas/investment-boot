@@ -1,54 +1,50 @@
-import * as inquirer from 'inquirer';
-import { config } from '@/config';
+import { promptModule } from '@/config';
+import { Messages, selectLanguage } from '@/messages';
 
-console.log('Test Key:', config.test_key);
+let locale: Messages;
 
-const promptModule = inquirer.createPromptModule();
-
-async function runProgramA() {
-  console.log('Running Program A...');
+async function checkPortfolio() {
+  console.log(locale.portfolioMessage);
+  // Lógica para mostrar el portafolio
 }
 
-async function runProgramB() {
-  console.log('Running Program B...');
-}
-
-async function runProgramC() {
-  console.log('Running Program C...');
-}
-
-async function runProgramD() {
-  console.log('Running Program D...');
+async function viewPositions() {
+  console.log(locale.positionsMessage);
+  // Lógica para mostrar las posiciones abiertas
 }
 
 async function mainMenu() {
-  const answers = await promptModule([{
-    type: 'list',
-    name: 'program',
-    message: 'Which program would you like to run?',
-    choices: [
-      'Program A',
-      'Program B',
-      'Program C',
-      'Program D'
-    ]
-  }]);
+  locale = await selectLanguage();
 
-  switch (answers.program) {
-    case 'Program A':
-      await runProgramA();
+  console.log(locale.welcome);
+
+  const questions = [
+    {
+      type: 'list',
+      name: 'action',
+      message: locale.selectAction,
+      choices: [
+        { name: locale.actions.checkPortfolio, value: 'portfolio' },
+        { name: locale.actions.viewPositions, value: 'positions' },
+        { name: locale.actions.exit, value: 'exit' }
+      ]
+    }
+  ];
+
+  const answers = await promptModule(questions);
+
+  switch (answers.action) {
+    case 'portfolio':
+      await checkPortfolio();
       break;
-    case 'Program B':
-      await runProgramB();
+    case 'positions':
+      await viewPositions();
       break;
-    case 'Program C':
-      await runProgramC();
-      break;
-    case 'Program D':
-      await runProgramD();
-      break;
+    case 'exit':
+      console.log(locale.exitMessage);
+      process.exit();
     default:
-      console.log('No valid program selected.');
+      console.log('Invalid option.');
       break;
   }
 }
