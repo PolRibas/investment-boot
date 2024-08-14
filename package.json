@@ -2,16 +2,22 @@
   "name": "investment-boot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app/main.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node -r tsconfig-paths/register src/app/main.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^22.3.0",
+    "dotenv": "^16.4.5",
+    "inquirer": "^8.2.6",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.7",
+    "tsconfig-paths": "^4.2.0"
   }
 }
